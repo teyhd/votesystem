@@ -1,0 +1,53 @@
+<h5 class="tiny">Просмотр новости</h5>
+ <div class="row">
+    <div class="col s12">
+       <form  id="editnews" action="edit?idn={{content.id}}" method="post" enctype="multipart/form-data" class="col s12">
+         <div class="row">
+            <div class="input-field col s12">
+                <input placeholder="В САНКТ-ПЕТЕРБУРГСКОМ ПАНСИОНЕ ВОСПИТАННИЦ" name="new_head" value="{{content.head}}" id="new_head" type="text" class="validate">
+                <label for="new_head">Заголовок</label>
+            </div>
+            <div class="input-field col s12">
+                 <textarea placeholder="Основное содержание" name="new_text" id="new_text" class="materialize-textarea">{{content.cont}}</textarea>
+                 <label for="new_text">Содержание новости</label> 
+            </div>
+            <div class="input-field col s6">
+                <input placeholder="Дата мероприятия" value="{{content.mpdate}}" name="new_date" id="mp_date" type="text" class="datepicker">
+                <label class="active" for="mp_date">Дата</label>
+            </div>
+            <div class="input-field col s6">
+                <input placeholder="Гришина Елена" value="{{content.autor}}" id="new_auth" name="new_auth" type="text" class="validate">
+                <label class="active" for="new_auth">Фамилия Имя автора новости</label>
+            </div>
+                {{#if content}}
+                        {{#each content.pictures}}
+                            {{#if @index}}
+                            <div class="center-align input-field col s6"> 
+                                <img class="materialboxed responsive-img center-align" src="{{this}}">
+                            </div>              
+                            {{else}}
+                            <div class="center-align input-field col s6 offset-s3  #64b5f6 blue lighten-5"> 
+                                <h6 class="tiny">Заставка</h6>
+                                <img class="materialboxed responsive-img center-align"  src="{{this}}">
+                            </div>                               
+                            {{/if}}
+                        {{/each}}
+                    {{else}}
+
+                    {{/if}}              
+            {{#if_more auth 2}}
+                {{#if_eq iserr true}}
+                <div class="center-align input-field col s6 offset-s3">
+                    <a class="waves-effect waves-light btn-small blue" href="/noerr?idn={{content.id}}">Нет Ошибки</a>
+                </div>      
+                {{/if_eq}}
+            {{/if_more}}
+
+        <div class="center-align input-field col s6 offset-s3">
+            <a class="btn waves-effect waves-light" href="/">Вернуться на главную</a>
+        </div>
+                  
+       </form> 
+      
+    </div>
+ </div>

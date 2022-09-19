@@ -1,0 +1,52 @@
+<div class="container">
+ <div class="row">
+    <h5 class="center">Опубликовать документ на сайте</h5>
+    <form  id="senddocs" action="adddoc" method="post" enctype="multipart/form-data" class="col s12">
+      <div class="row">
+                <div class="input-field col s12">
+                    <textarea placeholder="Сверху страницы" name="doc_text" id="doc_text" class="materialize-textarea"></textarea>
+                    <label for="doc_text">Пожелания для размещения.</label>                 
+                </div>
+
+
+                <div class="input-field col s12">
+                    <input placeholder="https://spb-pansion.mil.ru/Obrazovanie" id="doc_link" name="doc_link" type="text" class="validate">
+                     <label class="active" for="doc_link">Ссылка или название раздела</label>
+                </div>
+
+                <div class="input-field col s6">
+                    <input placeholder="Гришина Елена" id="doc_auth" name="doc_auth" type="text" class="validate" value="{{uname}}">
+                    <label class="active" for="doc_auth">Ваши Фамилия Имя</label>
+                </div>
+                <div class="input-field col s6">
+                    <input placeholder="+79998887766" id="doc_num" name="doc_num" type="text" class="validate">
+                    <label class="active" for="doc_num">Телефон для связи</label>
+                </div>
+               <div class="row">
+ 
+                    <div class="input-field col s12">
+                        <div class="file-field input-field">
+                            <div class="btn blue">
+                                <span>Загрузить</span>
+                                <input type="file" multiple name='docsimg'>
+                            </div>
+                            <div class="file-path-wrapper">
+                                <input class="file-path validate" id="all_pic_name" name="all_pic_name" type="text" placeholder="Загрузите документ">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s12 center">
+
+                        <button class="btn waves-effect waves-light" id="senddoc" type="submit" name="action">Отправить
+                        <i class="material-icons right">send</i>
+                        </button>
+                         
+                    </div>
+               </div>
+                    
+       </div>            
+     </div>
+    </form>
+  </div>
+
+</div>

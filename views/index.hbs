@@ -1,0 +1,318 @@
+{{#if_eq stat.[0] 0}}
+ <!--<h6 class="center"> Новости на проверке - 0</h6> -->   
+{{else}}
+<h5 class="center"> Новости на проверке - {{stat.[0]}} </h5>
+  <table border="1" class="responsive-table centered striped highlight ">
+        <thead>
+          <tr>
+              <th>№</th>
+              <th>Мероприятие</th>
+              <th>Заголовок</th>
+              <th>Создано</th>
+              <th>Автор</th>
+              <th>Статус</th>
+              <th class="hide-on-small-only">Замечания</th>
+              <th>Действие</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {{#if content.length}}
+            {{#each content}}
+              {{#if_eq status "Ожидает утверждения"}}
+              <tr>
+              <td>{{id}}</td>
+              <td>{{mpdate}}</td>
+              <td>{{head}}</td>
+              <td>{{date}}</td>
+              <td>{{autor}}</td>
+              <td>{{status}}</td>
+              <td class="hide-on-small-only">{{comment}}</td>
+              <td>
+                <a class="waves-effect waves-light btn-small input-field" href="/edit?idn={{id}}" >Редактировать</a>
+               <!--  <a class="waves-effect waves-light btn-small blue" href="/edit?idn={{id}}" >Просмотр</a>
+                <a class="waves-effect waves-light btn-small red" href="/edit?idn={{id}}" >Удалить</a> -->
+                </td>
+              </tr>    
+
+              {{/if_eq}}        
+            {{/each}}
+
+          {{else}}
+          <tr>
+            <td>0</td>
+            <td>00.0</td>
+            <td>Новостей нет. ВЕРОЯТНО, ЭТО ОШИБКА! СООБЩИТЕ</td>
+            <td>00.00 00:00</td>
+            <td>Фамилия Имя</td>
+            <td>0</td>
+            <td>Нет</td>
+            <td><a class="waves-effect waves-light btn-small">Редактировать</a></td>
+          </tr>
+          {{/if}}
+        </tbody>
+  </table>
+{{/if_eq}} 
+
+{{#if_eq stat.[1] 0}}
+<!--<h6 class="center" > Новости, требующие доработку - 0</h6>  --> 
+{{else}}
+<h5 class="center" > Новости, требующие доработку - {{stat.[1]}} </h5>
+  <table border="1" class="responsive-table centered striped highlight">
+        <thead>
+          <tr>
+              <th>№</th>
+              <th>Мероприятие</th>
+              <th>Заголовок</th>
+              <th>Создано</th>
+              <th>Автор</th>
+              <th>Статус</th>
+              <th class="hide-on-small-only">Замечания</th>
+              <th>Действие</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {{#if content.length}}
+            {{#each content}}
+              {{#if_eq status "Требует исправления!"}}
+              <tr>
+              <td>{{id}}</td>
+              <td>{{mpdate}}</td>
+              <td>{{head}}</td>
+              <td>{{date}}</td>
+              <td>{{autor}}</td>
+              <td>{{status}}</td>
+              <td class="hide-on-small-only">{{comment}}</td>
+              <td><a class="waves-effect waves-light btn-small" href="/edit?idn={{id}}" >Редактировать</a></td>
+              </tr>    
+
+              {{/if_eq}}        
+            {{/each}}
+
+          {{else}}
+          <tr>
+            <td>0</td>
+            <td>00.0</td>
+            <td>Новостей нет. ВЕРОЯТНО, ЭТО ОШИБКА! СООБЩИТЕ</td>
+            <td>00.00 00:00</td>
+            <td>Фамилия Имя</td>
+            <td>0</td>
+            <td>Нет</td>
+            <td><a class="waves-effect waves-light btn-small">Редактировать</a></td>
+          </tr>
+          {{/if}}
+        </tbody>
+  </table>
+{{/if_eq}} 
+
+{{#if_eq stat.[2] 0}}
+ <!-- <h6 class="center" > Новости на отправку - 0</h6>-->
+{{else}}
+<h5 class="center" > Новости на отправку - {{stat.[2]}}</h5>
+    <table border="1" class="responsive-table centered striped highlight ">
+        <thead>
+          <tr>
+              <th>№</th>
+              <th>Мероприятие</th>
+              <th>Заголовок</th>
+              <th>Создано</th>
+              <th>Автор</th>
+              <th>Статус</th>
+              <th class="hide-on-small-only">Замечания</th>
+              <th>Действие</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {{#if content.length}}
+            {{#each content}}
+              {{#if_eq status "Утверждено! Ожидает отправку"}}
+              <tr>
+              <td>{{id}}</td>
+              <td>{{mpdate}}</td>
+              <td>{{head}}</td>
+              <td>{{date}}</td>
+              <td>{{autor}}</td>
+              <td>{{status}}</td>
+              <td class="hide-on-small-only">{{comment}}</td>
+              <td><a class="waves-effect waves-light btn-small" href="/edit?idn={{id}}" >Редактировать</a></td>
+              </tr>    
+
+              {{/if_eq}}        
+            {{/each}}
+
+          {{else}}
+          <tr>
+            <td>0</td>
+            <td>00.0</td>
+            <td>Новостей нет. ВЕРОЯТНО, ЭТО ОШИБКА! СООБЩИТЕ</td>
+            <td>00.00 00:00</td>
+            <td>Фамилия Имя</td>
+            <td>0</td>
+            <td>Нет</td>
+            <td><a class="waves-effect waves-light btn-small">Редактировать</a></td>
+          </tr>
+          {{/if}}
+        </tbody>
+  </table>
+{{/if_eq}} 
+
+
+{{#if_eq stat.[3] 0}}
+   <!--<h6 class="center" > Новости, ожидающие публикации - 0</h6> -->  
+{{else}}
+<h5 class="center" > Новости, ожидающие публикации - {{stat.[3]}}</h5>
+    <table border="1" class="responsive-table centered striped highlight ">
+        <thead>
+          <tr>
+              <th>№</th>
+              <th>Мероприятие</th>
+              <th>Заголовок</th>
+              <th>Создано</th>
+              <th>Автор</th>
+              <th>Статус</th>
+              <th class="hide-on-small-only">Замечания</th>
+              <th>Действие</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {{#if content.length}}
+            {{#each content}}
+              {{#if_eq status "Отправлено"}}
+              <tr>
+              <td>{{id}}</td>
+              <td>{{mpdate}}</td>
+              <td>{{head}}</td>
+              <td>{{date}}</td>
+              <td>{{autor}}</td>
+              <td>{{status}}</td>
+              <td class="hide-on-small-only">{{comment}}</td>
+              <td><a class="waves-effect waves-light btn-small blue" href="/show?idn={{id}}" >Просмотреть</a></td>
+              </tr>    
+
+              {{/if_eq}}        
+            {{/each}}
+
+          {{else}}
+          <tr>
+            <td>0</td>
+            <td>00.0</td>
+            <td>Новостей нет. ВЕРОЯТНО, ЭТО ОШИБКА! СООБЩИТЕ</td>
+            <td>00.00 00:00</td>
+            <td>Фамилия Имя</td>
+            <td>0</td>
+            <td>Нет</td>
+            
+          </tr>
+          {{/if}}
+        </tbody>
+  </table>
+{{/if_eq}} 
+
+
+{{#if_eq stat.[5] 0}}
+ <!--<h6 class="center" > Опубликованные Новости - 0</h6> -->
+{{else}}
+<h5 class="center red-text" >Неверно опубликованные Новости -{{stat.[5]}}</h5> 
+    <table border="1" class="responsive-table centered striped highlight #ffebee red lighten-5">
+        <thead>
+          <tr>
+              <th>№</th>
+              <th>Заголовок</th>
+              <th>Действие</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {{#if content.length}}
+            {{#each content}}
+              {{#if_eq status "На сайте! ОШИБКА в содержании!!!"}}
+              <tr>
+              <td>{{id}}</td>
+              <td>{{head}}</td>
+              <td>
+                <a class="waves-effect waves-light btn-small green" href="/show?idn={{id}}&err=1">В системе</a>
+                <a class="waves-effect waves-light btn-small red" href="{{link}}" >На сайте</a>  
+              </td>
+              </tr>    
+
+              {{/if_eq}}        
+            {{/each}}
+
+          {{else}}
+          <tr>
+            <td>0</td>
+            <td>00.0</td>
+            <td>Новостей нет. ВЕРОЯТНО, ЭТО ОШИБКА! СООБЩИТЕ</td>
+            <td>00.00 00:00</td>
+            <td>Фамилия Имя</td>
+            <td>0</td>
+            <td>Нет</td>
+            <td><a class="waves-effect waves-light btn-small">Редактировать</a></td>
+          </tr>
+          {{/if}}
+        </tbody>
+  </table>
+{{/if_eq}} 
+    
+{{#if_eq stat.[4] 0}}
+ <!--<h6 class="center" > Опубликованные Новости - 0</h6> -->
+{{else}}
+<h5 class="center" > Опубликованные Новости -{{stat.[4]}}</h5> 
+    <table border="1" class="responsive-table centered striped highlight ">
+        <thead>
+          <tr>
+              <th>№</th>
+              <th>Мероприятие</th>
+              <th>Заголовок</th>
+              <th>Создано</th>
+              <th>Автор</th>
+              <th>Статус</th>
+              <th>Действие</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {{#if content.length}}
+            {{#each content}}
+              {{#if_eq status "На сайте"}}
+              <tr>
+              <td>{{id}}</td>
+              <td>{{mpdate}}</td>
+              <td>{{head}}</td>
+              <td>{{date}}</td>
+              <td>{{autor}}</td>
+              <td>{{status}}</td>
+
+              <td>
+                <a class="waves-effect waves-light btn-small blue" href="/show?idn={{id}}" >Просмотреть</a>
+                <a class="waves-effect waves-light btn-small red" href="{{link}}" >На сайте</a>
+              </td>
+              </tr>    
+
+              {{/if_eq}}        
+            {{/each}}
+
+          {{else}}
+          <tr>
+            <td>0</td>
+            <td>00.0</td>
+            <td>Новостей нет. ВЕРОЯТНО, ЭТО ОШИБКА! СООБЩИТЕ</td>
+            <td>00.00 00:00</td>
+            <td>Фамилия Имя</td>
+            <td>0</td>
+            <td>Нет</td>
+            <td><a class="waves-effect waves-light btn-small">Редактировать</a></td>
+          </tr>
+          {{/if}}
+        </tbody>
+  </table>
+{{/if_eq}} 
+
+</div>
+
+            
+
+

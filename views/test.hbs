@@ -1,0 +1,79 @@
+<h4>Новостей</h4>
+{{#if_eq stat.[0] 0}}
+<h5 class="center"> Новости на проверке - 0</h5>
+{{else}}
+<h5 class="center"> Новости на проверке - {{stat.[0]}} </h5>
+          {{#if content.length}}
+            {{#each content}}
+              {{#if_eq status "Ожидает утверждения"}}
+            <div class="col s12 m7">
+                <div class="card horizontal">         
+                    <div class="card-stacked">
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="col s4 m4"> <h5 class="left-align ">№{{id}}</h5> </div>
+                                <div class="col s4 m4"> <h5 class="center-align "> {{status}}</h5> </div>               
+                                <div class="col s4 m4"> <h5 class="right-align"> {{date}}</h5> </div>
+                                <div class="col s12"><h5 class="center-align">{{mpdate}} {{head}}</h5></div>
+                                <div class="col s12"><h5 class="center-align truncate">{{comment}}</h5></div>
+                            </div>
+                        </div>
+                        <div class="card-action right-align">
+                            <div class="row">
+                                 <div class="col s6 m6 "> 
+                                     <h5 class="left-align"> {{autor}}</h5> 
+                                </div>
+                                 <div class="col s6 m6 offset-s6"> 
+                                    <a class="waves-effect waves-light btn " href="/edit?idn={{id}}" >Редактировать</a>
+                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+              {{/if_eq}}        
+            {{/each}}
+
+          {{else}}
+          df
+          {{/if}}
+
+{{/if_eq}} 
+
+{{#if_eq stat.[0] 0}}
+<h5 class="center"> Новости на проверке - 0</h5>
+{{else}}
+<h5 class="center"> Новости на проверке - {{stat.[0]}} </h5>
+          {{#if content.length}}
+            {{#each content}}
+              {{#if_eq status "Ожидает утверждения"}}
+            <div class="row z-depth-2">
+                <div class="col s4"><h5 class="left-align">Создано: {{date}}</h5></div>
+                <div class="col s12"><h5 class="center-align truncate">[№{{id}}] {{mpdate}} {{head}}</h5></div>
+                <div class="col s4"><span class="center-align flow-text">Автор: {{autor}}</span></div>
+                <div class="col s4"><span class="center-align flow-text truncate">{{comment}}</span></div>
+                <div class="col s4"><span class="center-align flow-text">{{status}}</span></div>
+                <a class="col s4 offset-s4 waves-effect waves-light btn" href="/edit?idn={{id}}" >Редактировать</a>
+                <div class="col s12"><span class="center-align flow-text">{{status}}</span></div>
+            </div>
+             <!-- <tr>
+                                                <div class="col s4"><img class="materialboxed responsive-img" width="100" src="https://s1.1zoom.ru/b5050/93/340564-FAKIR_1600x1200.jpg"></div>
+              <td>{{id}}</td>
+              <td>{{mpdate}}</td>
+              <td>{{head}}</td>
+              <td>{{date}}</td>
+              <td>{{autor}}</td>
+              <td>{{status}}</td>
+              
+              <td class="hide-on-small-only">{{comment}}</td>
+              <td><a class="waves-effect waves-light btn" href="/edit?idn={{id}}" >Редактировать</a></td>
+              </tr>   --> 
+
+              {{/if_eq}}        
+            {{/each}}
+
+          {{else}}
+          df
+          {{/if}}
+
+{{/if_eq}} 
