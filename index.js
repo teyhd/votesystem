@@ -171,17 +171,30 @@ app.get('/',(req,res)=>{
 })
 app.get('/form',(req,res)=>{
   let film
+  let flag = 0
 try {
   film = dbworker.getfilm(req.query.filmid);
   film[0].typen = getfilm(film[0].type)
 } catch (error) {
   logman.log('Ошибка в 109 строке:',error);
 }
+  try {
+   var vres = dbworker.getvoteusr(autinfo.nameid,req.query.filmid)
+   console.dir(vres)
+   if (vres!=undefined) {
+    console.dir(vres)
+    flag = 1
+  }
+  } catch (error) {
+    logman.log(error)
+  }
   res.render('form',{
     title: 'Голосование',
     auth: auth,
     film: film,
-    user: autinfo.nameid
+    user: autinfo.nameid,
+    flag:flag,
+    vres:vres
   });
 }) 
 app.get('/pers',(req,res)=>{

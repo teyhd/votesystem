@@ -24,7 +24,7 @@ module.exports.dbworker = class dbworker {
     }
 
     getvoted(userid){
-      let q = `SELECT id FROM vote WHERE nameid=${userid};`;
+      let q = `SELECT filmid FROM vote WHERE nameid=${userid};`;
       let an = this.syncSql.mysql(this.sett,q).data.rows;
       return an;
     }
@@ -65,7 +65,11 @@ module.exports.dbworker = class dbworker {
       console.dir(ans)
       return ans;
     }
-    
+    getvoteusr(nameid,filmid){
+      let q = `SELECT * FROM vote WHERE nameid=${nameid} AND filmid=${filmid};`;
+      let an = this.syncSql.mysql(this.sett,q).data.rows[0];
+      return an
+    }
     addvote(nameid,filmid,t){
       let q = `SELECT id as insertId FROM vote WHERE nameid=${nameid} AND filmid=${filmid};`;
       let an = this.syncSql.mysql(this.sett,q).data.rows[0];

@@ -15,9 +15,8 @@
                  </div>
                 <div class="col s12"> 
                     <h5 class="center">Соответствие заявленному жанру{{#if_j film.0.type 4 5}}, актуальность и социальная значимость{{/if_j}}</h5>
-                    <p class="slider-update-value" class="center red-text" >5</p>   
                     <input class="slider-update-inp" type="text" value="0" hidden name="janr">       
-                    <div class="slider-update"></div>
+                    <div class="slider-update" name="janr"></div>
                     <input hidden value="5" class="slider-max">
                     <br> <br> 
                 </div>
@@ -25,9 +24,9 @@
                 <div class="col s12"> 
                     <h5 class="center">Драматургия</h5>
                     <p class="center">(тема, идея, сюжет, композиция героя, характеры)</p>
-                    <p class="slider-update-value" class="center red-text" >5</p> 
+                    
                     <input class="slider-update-inp" type="text" value="0" hidden name="dram">        
-                    <div class="slider-update"></div>
+                    <div class="slider-update" name="dram"></div>
                     <input hidden value="10" class="slider-max">
                     <br> <br> 
                 </div>
@@ -35,9 +34,9 @@
                 {{#if_j film.0.type 1 2}}
                 <div class="col s12"> 
                     <h5 class="center">Актуальность и социальная значимость</h5>
-                    <p class="slider-update-value" class="center red-text" >5</p> 
+                   
                     <input class="slider-update-inp" type="text" value="0" hidden name="actu">        
-                    <div class="slider-update"></div>
+                    <div class="slider-update" name="actu"></div>
                     <input hidden value="5" class="slider-max">
                     <br> <br> 
                 </div>
@@ -45,9 +44,9 @@
                 {{#if_j film.0.type 1 2}}
                 <div class="col s12"> 
                     <h5 class="center">Оригинальность идеи и исполнения</h5>
-                    <p class="slider-update-value" class="center red-text" >5</p> 
+                    
                     <input class="slider-update-inp" type="text" value="0" hidden name="orig">        
-                    <div class="slider-update"></div>
+                    <div class="slider-update" name="orig"></div> 
                     <input hidden value="5" class="slider-max">
                     <br> <br> 
                 </div>
@@ -55,9 +54,9 @@
                 {{#if_j film.0.type 1 2}}
                 <div class="col s12"> 
                     <h5 class="center">Содержательность работы</h5>
-                    <p class="slider-update-value" class="center red-text" >5</p> 
+                   
                     <input class="slider-update-inp" type="text" value="0" hidden name="soder">        
-                    <div class="slider-update"></div>
+                    <div class="slider-update" name="soder"></div>
                     <input hidden value="10" class="slider-max">
                     <br> <br> 
                 </div>
@@ -66,9 +65,9 @@
                 <div class="col s12"> 
                     <h5 class="center">Художественные достоинства</h5>
                     <p class="center ">(режиссерские решения, выдержанность стиля, цельность и законченность композиции, работа актеров, использование реквизита)</p>
-                    <p class="slider-update-value" class="center red-text" >5</p>   
+                     
                     <input class="slider-update-inp" type="text" value="0" hidden name="hyd">      
-                    <div class="slider-update"></div>
+                    <div class="slider-update" name="hyd"></div>
                     <input hidden value="5" class="slider-max">
                     <br> <br> 
                 </div>
@@ -76,18 +75,18 @@
                 <div class="col s12"> 
                     <h5 class="center">Техническая реализация</h5>
                     <p class="center ">(качество видеосъемки, монтаж, компьютерная графика, сложность исполнения)</p>
-                    <p class="slider-update-value" class="center red-text" >5</p>  
+                    
                     <input class="slider-update-inp" type="text" value="0" hidden name="tex">       
-                    <div class="slider-update"></div>
+                    <div class="slider-update" name="tex"></div>
                     <input hidden value="10" class="slider-max">
                     <br> <br> 
                 </div>
                 <div class="col s12"> 
                     <h5 class="center">Выразительные средства</h5>
                     <p class="center ">(цвет, свет, стиль, дизайн, эффекты, музыкальное и звуковой сопровождение, интонация)</p>
-                    <p class="slider-update-value" class="center red-text" >5</p>     
+                  
                     <input class="slider-update-inp" type="text" value="0" hidden name="vira">    
-                    <div class="slider-update"></div>
+                    <div class="slider-update" name="vira"></div>
                     <input hidden value="5" class="slider-max">
                     <br> <br> 
                 </div>
@@ -103,7 +102,7 @@
   </div>
 
   <script>
-    var slider_val = document.getElementsByClassName('slider-update-value');
+   // var slider_val = document.getElementsByClassName('slider-update-value');
     var slider_inp = document.getElementsByClassName('slider-update-inp');
     var slider_div = document.getElementsByClassName('slider-update');
     var slider_max = document.getElementsByClassName('slider-max');
@@ -113,6 +112,7 @@
         noUiSlider.create(slider_div[i], {
             start: 0,
             connect: true,
+              margin: 300,
             step: 1,
             behaviour: 'tap',
             orientation: 'horizontal',
@@ -120,18 +120,20 @@
                 'min': 0,
                 'max': max
             },
-            
+             behaviour: 'tap-drag',
+            tooltips: true,
             pips: {
                 mode: 'values',
                 values: s(max),
                 density: 5
             }
         });
-        slider_div[i].noUiSlider.on('update', function (values, handle) {
-        slider_val[i].innerHTML = Math.round(values[handle]);
+       slider_div[i].noUiSlider.on('update', function (values, handle) {
         slider_inp[i].value = Math.round(values[handle]);   
-});
+        });
     }
+
+        
     function s(j){
         var pres = []
         let ans = 0
@@ -153,4 +155,33 @@
     $( "#new_text" ).keydown(function() {
       Cookies.set('text', $( "#new_text" ).val())
     });
+    $(document).ready(function(){
+          // janr dram actu orig soder hyd tex vira
+    try{document.getElementsByName('janr')[1].noUiSlider.set({{vres.janr}})} catch(e){
+            console.dir(e)
+       }
+    try{document.getElementsByName('dram')[1].noUiSlider.set({{vres.dram}})} catch(e){
+            console.dir(e)
+    }
+    try{document.getElementsByName('actu')[1].noUiSlider.set({{vres.actu}})} catch(e){
+            console.dir(e)
+    }
+    try{document.getElementsByName('orig')[1].noUiSlider.set({{vres.orig}})} catch(e){
+            console.dir(e)
+    }
+    try{document.getElementsByName('soder')[1].noUiSlider.set({{vres.soder}})} catch(e){
+            console.dir(e)
+    }
+    try{document.getElementsByName('hyd')[1].noUiSlider.set({{vres.hyd}})} catch(e){
+            console.dir(e)
+    }
+    try{document.getElementsByName('tex')[1].noUiSlider.set({{vres.tex}})} catch(e){
+            console.dir(e)
+    }
+       try{document.getElementsByName('vira')[1].noUiSlider.set({{vres.vira}})} catch(e){
+            console.dir(e)
+       }
+
+    })
+
   </script>
