@@ -1,3 +1,12 @@
+@media print {
+  *{
+    font-family: 'Times New Roman';
+    line-height: 0.9;
+  }
+	.header, .footer, .banner, nav {
+		display: none;
+	}
+}
 .bord_log {
   position: absolute;
   top: 150px;

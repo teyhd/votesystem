@@ -1,3 +1,5 @@
+const e = require('express');
+
 module.exports.dbworker = class dbworker {
   constructor() {
      this.syncSql = require('sync-sql');
@@ -13,13 +15,85 @@ module.exports.dbworker = class dbworker {
        // database : 'news',
         charset : 'utf8mb4_general_ci'
       }
-     
     }
 
-  getallnews(){
-    let q = `SELECT * FROM ${this.sett.database}.news ORDER BY id DESC;`
+    getallusers(){
+      let q = `SELECT * FROM users;`;
+      let an = this.syncSql.mysql(this.sett,q).data.rows;
+      return an;
+    }
+
+    getvoted(userid){
+      let q = `SELECT id FROM vote WHERE nameid=${userid};`;
+      let an = this.syncSql.mysql(this.sett,q).data.rows;
+      return an;
+    }
+    
+    gettyperes(type){
+      let q = `SELECT COUNT(*) as count,pku,film,TYPE,TIME,
+      ROUND(CAST(sum(janr) AS DEC(12,4))/COUNT(*),2) AS janr,
+      ROUND(CAST(sum(dram) AS DEC(12,4))/COUNT(*),2) AS dram,
+      ROUND(CAST(sum(actu) AS DEC(12,4))/COUNT(*),2) AS actu,
+      ROUND(CAST(sum(orig) AS DEC(12,4))/COUNT(*),2) AS orig,
+      ROUND(CAST(sum(soder) AS DEC(12,4))/COUNT(*),2) AS soder,
+      ROUND(CAST(sum(hyd) AS DEC(12,4))/COUNT(*),2) AS hyd,
+      ROUND(CAST(sum(tex) AS DEC(12,4))/COUNT(*),2) AS tex,
+      ROUND(CAST(sum(vira) AS DEC(12,4))/COUNT(*),2) AS vira,
+      janr+dram+actu+orig+soder+hyd+tex+vira AS itog     
+      FROM vote , film
+      WHERE vote.filmid = film.id
+      AND TYPE = ${type}
+      GROUP BY film
+      ORDER BY itog DESC`
+      return this.syncSql.mysql(this.sett,q).data.rows;
+    }
+    getuservoice(type,userid){
+      let q = `SELECT row_number() over(ORDER BY janr+dram+actu+orig+soder+hyd+tex+vira DESC) AS id,pku,film,type,janr,dram,actu,orig,soder,hyd,tex,vira,time,
+      janr+dram+actu+orig+soder+hyd+tex+vira as itog
+      FROM vote , film
+      WHERE vote.filmid = film.id
+      AND type = ${type}
+      AND nameid = ${userid}
+      GROUP BY film
+      ORDER BY itog DESC`
+      return this.syncSql.mysql(this.sett,q).data.rows;
+    }
+
+    updatevotepar(id,par,val){
+      let qur = `UPDATE vote SET ${par}=${val} WHERE id=${id};`
+      let ans = this.syncSql.mysql(this.sett,qur).data;
+      console.dir(ans)
+      return ans;
+    }
+    
+    addvote(nameid,filmid,t){
+      let q = `SELECT id as insertId FROM vote WHERE nameid=${nameid} AND filmid=${filmid};`;
+      let an = this.syncSql.mysql(this.sett,q).data.rows[0];
+          try {
+            if (an!=undefined) {
+              this.logman.log('Заменил голос')
+              return an
+            } else{
+              let qur = `INSERT INTO vote (nameid,filmid,time) VALUES (${nameid},${filmid},${t});`;
+              let ans = this.syncSql.mysql(this.sett,qur).data.rows;
+              return ans;
+            }
+          } catch (error) {
+            console.dir(error)
+          }
+     // INSERT INTO `vote` (`nameid`, `filmid`) VALUES ('12', '12');
+    }
+
+  getfilms(type){
+    let q = `SELECT * FROM ${this.sett.database}.film WHERE type=${type}`
     return this.syncSql.mysql(this.sett,q).data.rows;
   }
+  
+  getfilm(id){
+    let q = `SELECT * FROM ${this.sett.database}.film WHERE id=${id}`
+    return this.syncSql.mysql(this.sett,q).data.rows; 
+  }
+
   getleadersnews(){
     let q = `SELECT autor,COUNT(*) AS ans FROM ${this.sett.database}.news GROUP BY autor ORDER BY ans DESC LIMIT 3;`
     return this.syncSql.mysql(this.sett,q).data.rows;

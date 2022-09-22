@@ -1,0 +1,61 @@
+<div class="container">
+ <div class="row">
+    <h5 class="center">Протокол эксперта</h5>
+    <table>
+         <thead>
+            <tr>
+                <th>ФИО эксперта</th>
+                <th>Номинация</th>      
+                <th>Протокол эксперта</th>           
+            </tr>
+            </thead>
+
+            <tbody>
+                {{#each content}}
+                <tr>
+                <td>{{this.name}}</td>
+                <td>{{this.role}}</td>
+                <td><a id="btn{{this.id}}" class="btn blue " href="/pers?userid={{this.id}}">Сгенерировать</a></td>
+                </tr>
+                {{/each}}
+            </tbody>
+    </table>
+
+    <h5 class="center">Итоговый протокол</h5>
+    <table>
+         <thead>
+            <tr>
+                <th>Номинация</th>      
+                <th>Итоговый протокол</th>           
+            </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>Игровой короткометражный фильм</td>
+                    <td><a href="/itog?id=0" class="btn blue">Сгенерировать</a></td>
+                </tr>
+                <tr>
+                    <td>Документальный фильм</td>
+                    <td><a href="/itog?id=1" class="btn blue">Сгенерировать</a></td>
+                </tr>
+                <tr>
+                    <td>Научно-популярный фильм</td>
+                    <td><a href="/itog?id=2" class="btn blue">Сгенерировать</a></td>
+                </tr>
+                <tr>
+                    <td>Анимационный фильм</td>
+                    <td><a href="/itog?id=3" class="btn blue">Сгенерировать</a></td>
+                </tr>
+                <tr>
+                    <td>Социальный/рекламный ролик</td>
+                    <td><a href="/itog?id=4" class="btn blue">Сгенерировать</a></td>
+                </tr>
+                <tr>
+                    <td>Музыкальный видеоклип</td>
+                    <td><a href="/itog?id=5" class="btn blue">Сгенерировать</a></td>
+                </tr>
+            </tbody>
+    </table>
+  </div>
+

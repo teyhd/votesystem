@@ -1,14 +1,15 @@
- <nav class="blue darken-3">
+ <nav class="blue darken-1">
     <div class="nav-wrapper">
-      <a href="/" class="brand-logo right hide-on-med-and-up">Кадетский взгляд</a>
-      <a href="/" class="brand-logo center hide-on-small-only">Кадетский взгляд</a>
+      <a href="/" class="brand-logo right hide-on-med-and-up">Кадетский взгляд - 2022</a>
+      <a href="/" class="brand-logo center hide-on-small-only">Кадетский взгляд - 2022</a>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
-        {{#if auth}}
+        {{#if_a auth}}
         <li><a href="/logout">Выход<i class="material-icons right">account_circle</i></a></li>
         {{else}}
         <li><a class="modal-trigger" href="#modal1" name="login">Вход<i class="material-icons right">account_circle</i></a></li>
-        {{/if}}
+        {{/if_a}}
+        {{>navli}}
       </ul>
     </div>
   </nav>
@@ -16,12 +17,12 @@
 
  <!-- МЕНЮ ДЛЯ ТЕЛЕФОНА -->
   <ul class="sidenav" id="mobile-demo">
-        {{#if auth}}
+        {{#if_a auth}}
         <li><a href="/logout">Выход<i class="material-icons">account_circle</i></a></li>
         {{else}}
         <li><a class="modal-trigger" href="#modal1" name="login">Вход<i class="material-icons">account_circle</i></a></li>
-        {{/if}}    
-      
+        {{/if_a}}    
+        {{>navli}}
   </ul>
 
 <script> 
@@ -35,20 +36,3 @@ $( document ).ready(function () {
   $('.sidenav').sidenav();
 })
 </script>    
-
-<!-- Старый
-<nav class="blue darken-4 ">
-  <div class="nav-wrapper ">
-    <a href="/" class="brand-logo center hide-on-med-and-down">Кадетский взгляд</a>
-        <ul id="nav-mobile" class="right">
-        <li><a href="/new">Добавить новость</a></li>
-      {{#if auth}}
-      <li><a id="sign" name="logout">Выход<i class="tiny material-icons right">account_circle</i></a></li>
-      {{else}}
-      <li><a class="modal-trigger" href="#modal1" name="login">Вход<i class="tiny material-icons right">account_circle</i></a></li>
-      {{/if}}
-      </ul>
-  </div>
-</nav>   
-
--->
