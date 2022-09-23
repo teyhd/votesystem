@@ -14,7 +14,7 @@ const fs = require('fs-extra');
 
 const db = require('./vendor/db.js');
 const dbworker = new db.dbworker();      
-
+dbworker.sesscreate("555")
 const { json } = require('express');
 var appDir = path.dirname(require.main.filename);
 const news_path = path.join(appDir,'public/news');
