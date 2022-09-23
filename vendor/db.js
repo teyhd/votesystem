@@ -278,6 +278,7 @@ module.exports.dbworker = class dbworker {
    let lastup = this.unixTime(new Date());
    let qur = `INSERT INTO ${this.sett.database}.auten (sesid,time) VALUES ('${sesid}',${lastup});`;
    let ans = this.syncSql.mysql(this.sett,qur).data;
+   console.log(ans)
    return ans;
   }
   getautinfo(sesid){
