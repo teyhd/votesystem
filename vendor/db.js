@@ -278,14 +278,14 @@ module.exports.dbworker = class dbworker {
    let lastup = this.unixTime(new Date());
    let qur = `INSERT INTO ${this.sett.database}.auten (sesid,time) VALUES ('${sesid}',${lastup});`;
    let ans = this.syncSql.mysql(this.sett,qur).data;
-   console.log(ans)
+   //console.log(ans)
    return ans;
   }
   getautinfo(sesid){
     let qur = `SELECT * FROM ${this.sett.database}.auten WHERE sesid='${sesid}';`;
     try {
       let ans = this.syncSql.mysql(this.sett,qur).data.rows[0];
-      console.dir(ans);
+      //console.dir(ans);
       if (ans!=undefined){
         return ans;
       } else{
