@@ -1,4 +1,10 @@
- <li><a href="/manual">Инструкции<i class="material-icons right">insert_drive_file</i></a></li> 
+ {{#if_a auth}}
+<li><a href="/logout">Выход<i class="material-icons">account_circle</i></a></li>
+{{else}}
+<li><a class="modal-trigger" href="#modal1" name="login">Вход<i class="material-icons">account_circle</i></a></li>
+{{/if_a}}   
+ <li class="divider"></li>
+ <li><a href="/manual">Инструкции<i class="material-icons ">insert_drive_file</i></a></li> 
 {{#if_eq auth 55}}
  <li><a href="/resul">Итоги</a></li> 
 {{/if_eq}}

@@ -34,3 +34,15 @@ function log (par) {
     console.log(texta);
     return texta
   }
+/*
+let file = fs.readFileSync(path.join(__dirname, 'user.txt'),{encoding: 'utf-8', flag:'r'})
+let names = file.split("\r\n")
+names.forEach(e=>{
+  let f = e.split(".")
+  let ans = `${f[0]}`
+  ans = ans.replace(/\s{1,}/gm,'.');
+  ans = ans.replace(/^[ \s]+|[ \s]+$/gm,'');
+  ans = ans.split(".")
+  console.log(`${ans[1]}.${ans[0]}`)
+})
+*/

@@ -132,62 +132,6 @@
       checkandsend(false)
     })
 
-    function checkandsend(iscreate) {
-      //Все поля заполнены
-      if (!head_is_valid()){
-        M.toast({html: 'Исправьте заголовок в соответствии с требованиями!', classes: '#ef5350 red lighten-1 rounded'});
-        M.toast({html: 'В Санкт-Петербургском пансионе воспитанниц прошло что-то', classes: '#ef5350 blue lighten-1 rounded'});
-        M.toast({html: 'Воспитанницы Санкт-Петербургского пансиона что-то сделали', classes: '#ef5350 blue lighten-1 rounded'});
-      } else{
-        if ($("#mp_date").val()==''){
-          M.toast({html: 'Укажите дату мероприятия!', classes: '#ef5350 red lighten-1 rounded'});
-        } else{
-          if ($("#new_auth").val()==''){
-            M.toast({html: 'Укажите автора мероприятия!', classes: '#ef5350 red lighten-1 rounded'});
-          } else{
-            if (iscreate) {
-               if ($("#main_pic_name").val()==''){
-                  M.toast({html: 'Загрузите обложку мероприятия!', classes: '#ef5350 red lighten-1 rounded'});
-                } else{
-                  $("#create").submit();
-                }
-            } else{
-              $("#editnews").submit();
-            }
-          }
-          }
-      }
-     
-    }
-
-    $( "#btnorto" ).click(function() {
-      event.preventDefault();
-      if ($( "#new_text" ).val()!=''){
-        let tosend = $( "#new_text" ).val();
-        $.get( "/check", { text: tosend} )
-        .done(function( data ) {
-          console.log( "Data Loaded: " + data.result.length );
-          if (data.result.length==0){
-
-            $( "#card" ).hide();
-            M.toast({html: 'Проверка текста - Пройдена успешно!', classes: '#26a69a teal lighten-1 rounded'});
-          } else {
-            M.toast({html: 'Необходимо исправить ошибки в тексте!', classes: '#ef5350 red lighten-1 rounded'});
-            M.toast({html: `Количество ошибок: ${data.result.length}`, classes: '#ef5350 red lighten-1 rounded'});
-            $( "#card" ).show();
-           // $( "#create" ).prop('disabled', true);
-          //  $( "#editbtn" ).prop('disabled', true);
-            $("#cardcontent").html( errtohtml(data.result) )
-          }
-          $( "#create" ).prop('disabled', false);
-          $( "#editbtn" ).prop('disabled', false);
-        });
-        console.log( "Handler for .click() called." );
-      } else {
-        $( "#new_text" ).addClass( "invalid" );
-        M.toast({html: 'Пожалуйста, заполните содержание', classes: '#ef5350 red lighten-1 rounded'});
-      }    
-    });
     function errtohtml(arrerr){
       let ans = '<p>Необходимо исправить ошибки!</p>';
       for (let i = 0; i < arrerr.length; i++) {
@@ -215,23 +159,7 @@
       }).length > 0;
   }
  
-    $( "#new_text" ).keydown(function() {
-      $( "#new_text" ).removeClass( "invalid" );
-      Cookies.set('text', $( "#new_text" ).val())
-    });
- 
-    $( "#new_head" ).keydown(function() {
-      $( "#new_head" ).removeClass( "validate" );
-       if (!head_is_valid()){
-        $( "#new_head" ).removeClass( "valid" );
-        $( "#new_head" ).addClass( "invalid" );
-       }else{
-        $( "#new_head" ).removeClass( "invalid" );
-        $( "#new_head" ).addClass( "valid" );
-       }
-      
-     // console.log('ok');
-    });
+
     
     function curimgn(name) {
       let ans = name.split('/');
