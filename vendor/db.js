@@ -7,7 +7,7 @@ module.exports.dbworker = class dbworker {
      this.logman = require('./logs.js');
      this.path = require('path');
       this.sett = {
-        host     : 'localhost',
+        host     : '127.0.0.1',
         //host     : '192.168.0.104',
         user     : 'teyhd',
         password : '258000',
