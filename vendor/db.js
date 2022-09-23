@@ -282,9 +282,9 @@ module.exports.dbworker = class dbworker {
   }
   getautinfo(sesid){
     let qur = `SELECT * FROM ${this.sett.database}.auten WHERE sesid='${sesid}';`;
-    //console.dir(ans);
     try {
       let ans = this.syncSql.mysql(this.sett,qur).data.rows[0];
+      console.dir(ans);
       if (ans!=undefined){
         return ans;
       } else{
