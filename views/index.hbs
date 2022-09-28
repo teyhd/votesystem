@@ -24,9 +24,10 @@
       let u = {{usr}}
       $.get( "/test", { id: u} ).done(function( data ) {
         console.dir(data)
+        let ans = JSON.parse(data)
         for (let i = 0; i < ans.length; i++) {
           try{
-            let ans = JSON.parse(data)
+            
             console.log(ans)
             console.log(`#btn${ans[i]}`)
           $( `#btn${ans[i]}` ).removeClass( "blue" )   
