@@ -35,14 +35,20 @@ function log (par) {
     return texta
   }
 /*
-let file = fs.readFileSync(path.join(__dirname, 'user.txt'),{encoding: 'utf-8', flag:'r'})
+let file = fs.readFileSync(path.join(__dirname, 'num.txt'),{encoding: 'utf-8', flag:'r'})
 let names = file.split("\r\n")
 names.forEach(e=>{
-  let f = e.split(".")
+  let f = e.split(",")
   let ans = `${f[0]}`
   ans = ans.replace(/\s{1,}/gm,'.');
   ans = ans.replace(/^[ \s]+|[ \s]+$/gm,'');
-  ans = ans.split(".")
-  console.log(`${ans[1]}.${ans[0]}`)
+  ans = ans.split(",")
+ // console.dir(`${f}`)
+ ans.forEach(element => {
+    element = element.replace(/\s{1,}/gm,'');
+    element = element.replace(/^[ \s]+|[ \s]+$/gm,'');
+    element =element.replace(/[,]/gm,'');
+     console.log(element +",+,,,,,,,,,,,,,,,,,,,,,,,,,,,test 26.09 ::: test ::: * myContacts,,"+ element)
+  });
 })
 */
