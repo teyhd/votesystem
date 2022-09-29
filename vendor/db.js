@@ -22,6 +22,12 @@ module.exports.dbworker = class dbworker {
       let an = this.syncSql.mysql(this.sett,q).data.rows;
       return an;
     }
+    
+    getusersrep(){
+      let q = `SELECT name,lastseen FROM users WHERE lastseen>0;`;
+      let an = this.syncSql.mysql(this.sett,q).data.rows;
+      return an;
+    }
 
     getvoted(userid){
       let q = `SELECT filmid FROM vote WHERE nameid=${userid};`;

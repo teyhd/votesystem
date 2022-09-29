@@ -127,7 +127,7 @@ app.use(function (req, res, next) {
    auth = isAuth(req);
     logman.log(`На ${page }\n IP: ${ipinfo} \n Имя: ${usrinfo.name} \n Auth: ${auth}`);
   }
-  if (page!='/auth' && page!='/data' && page!='/download'){
+  if (page!='/auth' && page!='/data' && page!='/download' && page!='/rep'){
     if (auth===false && ipinfo!=122){ //Я ИСКЛЮЧЕНИЕ
       if (page!='/') {
         res.redirect("/")
@@ -275,6 +275,20 @@ app.get('/test',(req,res)=>{
  console.dir(JSON.stringify(ans))
  res.send(JSON.stringify(ans))
 })
+app.get('/rep',(req,res)=>{
+ try {
+  var voted = dbworker.getusersrep()
+  console.dir(voted)
+  voted.forEach(el =>{
+    let datecreate = new Date(el.lastseen*1000);
+    el.lastseen= `${curdate(datecreate.getDate())}.${curdate(datecreate.getMonth()+1)} ${curdate(datecreate.getHours())}:${curdate(datecreate.getMinutes())}:${curdate(datecreate.getSeconds())}`;
+  })
+ } catch (error) {
+  console.dir(error)
+ }
+ res.send(voted)
+})
+
 app.get('/resul',(req,res)=>{
   let users = dbworker.getallusers()
   users.forEach(e =>{
