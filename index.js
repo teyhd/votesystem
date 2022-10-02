@@ -280,7 +280,7 @@ app.get('/rep',(req,res)=>{
   var voted = dbworker.getusersrep()
   console.dir(voted)
   voted.forEach(el =>{
-    e.role = getfilm(e.role)
+    el.role = getfilm(el.role)
     let datecreate = new Date(el.lastseen*1000);
     el.lastseen= `${curdate(datecreate.getDate())}.${curdate(datecreate.getMonth()+1)} ${curdate(datecreate.getHours())}:${curdate(datecreate.getMinutes())}:${curdate(datecreate.getSeconds())}`;
   })
