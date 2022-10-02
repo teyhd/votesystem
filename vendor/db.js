@@ -24,7 +24,7 @@ module.exports.dbworker = class dbworker {
     }
     
     getusersrep(){
-      let q = `SELECT name,lastseen FROM users WHERE lastseen>0;`;
+      let q = `SELECT name,lastseen,role FROM users WHERE lastseen>0;`;
       let an = this.syncSql.mysql(this.sett,q).data.rows;
       return an;
     }
