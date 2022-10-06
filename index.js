@@ -465,8 +465,13 @@ async function start(){
     }
 }
 function getcurip(str) {
-  let arr = str.split(':');
-  arr = arr[arr.length-1];
+  try {
+    let arr = str.split(':');
+    arr = arr[arr.length-1];
+  } catch (error) {
+    console.log(error)
+  }
+
   return arr;
 }
 
