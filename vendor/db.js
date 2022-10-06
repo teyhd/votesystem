@@ -45,7 +45,10 @@ module.exports.dbworker = class dbworker {
       ROUND(CAST(sum(hyd) AS DEC(12,4))/COUNT(*),2) AS hyd,
       ROUND(CAST(sum(tex) AS DEC(12,4))/COUNT(*),2) AS tex,
       ROUND(CAST(sum(vira) AS DEC(12,4))/COUNT(*),2) AS vira,
-      janr+dram+actu+orig+soder+hyd+tex+vira AS itog     
+      ROUND(CAST(sum(janr) AS DEC(12,4))/COUNT(*),2)+ROUND(CAST(sum(dram) AS DEC(12,4))/COUNT(*),2)+
+		ROUND(CAST(sum(actu) AS DEC(12,4))/COUNT(*),2)+ROUND(CAST(sum(orig) AS DEC(12,4))/COUNT(*),2)+
+		ROUND(CAST(sum(soder) AS DEC(12,4))/COUNT(*),2)+ROUND(CAST(sum(hyd) AS DEC(12,4))/COUNT(*),2)+
+		ROUND(CAST(sum(tex) AS DEC(12,4))/COUNT(*),2)+ROUND(CAST(sum(vira) AS DEC(12,4))/COUNT(*),2) AS itog      
       FROM vote , film
       WHERE vote.filmid = film.id
       AND TYPE = ${type}
