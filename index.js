@@ -452,6 +452,7 @@ function getfilm(num) {
     'Социальный/рекламный ролик',
     'Музыкальный видеоклип'
   ]
+  ans[55] = "Администратор"
   return ans[num]
 }
 async function start(){
