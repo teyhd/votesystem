@@ -289,6 +289,17 @@ app.get('/rep',(req,res)=>{
  }
  res.send(voted)
 })
+app.get('/alli',(req,res)=>{
+  let users = dbworker.getallitogs()
+  users.forEach(e =>{
+    e.type = getfilm(e.type)
+  })
+  res.render('allitg',{
+    title: 'Места',
+    content:users,
+    auth: auth      
+  });
+})
 app.get('/voted',(req,res)=>{
   let users = dbworker.getres()
   users.forEach(e =>{

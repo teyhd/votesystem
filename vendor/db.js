@@ -16,7 +16,27 @@ module.exports.dbworker = class dbworker {
         charset : 'utf8mb4_general_ci'
       }
     }
-
+    getallitogs(){
+      let q = `SELECT COUNT(*) as count,pku,film,TYPE,TIME,
+      ROUND(CAST(sum(janr) AS DEC(12,4))/COUNT(*),2) AS janrs,
+      ROUND(CAST(sum(dram) AS DEC(12,4))/COUNT(*),2) AS dram,
+      ROUND(CAST(sum(actu) AS DEC(12,4))/COUNT(*),2) AS actu,
+      ROUND(CAST(sum(orig) AS DEC(12,4))/COUNT(*),2) AS orig,
+      ROUND(CAST(sum(soder) AS DEC(12,4))/COUNT(*),2) AS soder,
+      ROUND(CAST(sum(hyd) AS DEC(12,4))/COUNT(*),2) AS hyd,
+      ROUND(CAST(sum(tex) AS DEC(12,4))/COUNT(*),2) AS tex,
+      ROUND(CAST(sum(vira) AS DEC(12,4))/COUNT(*),2) AS vira,
+      ROUND(CAST(sum(janr) AS DEC(12,4))/COUNT(*),2)+ROUND(CAST(sum(dram) AS DEC(12,4))/COUNT(*),2)+
+		ROUND(CAST(sum(actu) AS DEC(12,4))/COUNT(*),2)+ROUND(CAST(sum(orig) AS DEC(12,4))/COUNT(*),2)+
+		ROUND(CAST(sum(soder) AS DEC(12,4))/COUNT(*),2)+ROUND(CAST(sum(hyd) AS DEC(12,4))/COUNT(*),2)+
+		ROUND(CAST(sum(tex) AS DEC(12,4))/COUNT(*),2)+ROUND(CAST(sum(vira) AS DEC(12,4))/COUNT(*),2) AS itog     
+      FROM vote , film
+      WHERE vote.filmid = film.id
+      GROUP BY film
+      ORDER BY type,itog DESC`;
+      let an = this.syncSql.mysql(this.sett,q).data.rows;
+      return an; 
+    }
     getres(){
       let q = `SELECT vote.id,users.name,pku.pku,films.film,films.type,
       vote.janr+vote.dram+vote.actu+vote.orig+vote.soder+vote.hyd+vote.tex+vote.vira AS result

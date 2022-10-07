@@ -1,0 +1,50 @@
+<p class="center">Голоса</p>
+<div class="row">
+    <div class="col s12">
+        <table border="1" class="responsive-table centered striped highlight ">
+                <thead>
+                <tr>
+                    <th>Училище</th>
+                    <th>Фильм</th>
+                    <th>Номинация</th>
+                    <th>Кол-во голосов</th>
+                    <th>Результат</th>
+                     <td>Соотв. жанру</td>
+                    <td>Драм</td>
+                    <td>Актуальность</td>
+                   <td>Оригин.</td>
+                    <td>содерж</td>
+                    <td>Худож</td>
+                    <td>Тех</td>
+                    <td>Выразит</td>
+
+                </tr>
+                </thead>
+                {{#OK}}{{/OK}}
+                <tbody>
+                    {{#each content}}
+                    <tr>
+                    <td>{{this.pku}}</td>
+                    <td>{{this.film}}</td>
+                    <td>{{this.type}}</td>
+                     <td>{{this.count}}</td>
+
+                     <td>{{this.itog}}</td>
+                    <td>{{this.dram}}</td>
+                    <td>{{this.actu}}</td>
+                   <td>{{this.orig}}</td>
+                    <td>{{this.soder}}</td>
+                    <td>{{this.hyd}}</td>
+                    <td>{{this.tex}}</td>
+                    <td>{{this.vira}}</td>
+                    <td>{{this.itog}}</td>
+                    </tr>    
+                    {{/each}}
+                </tbody>
+        </table>
+
+    </div>
+  {{!--   <div class="col s12">
+        <p class="right">Эксперт ___________ /{{user.name}}/</p>
+    </div> --}}
+</div>
