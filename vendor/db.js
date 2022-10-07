@@ -45,7 +45,7 @@ module.exports.dbworker = class dbworker {
       vote.nameid = users.id AND
       vote.filmid = films.id AND
       films.pku_id = pku.id
-      ORDER BY films.type,result DESC`;
+      ORDER BY vote.time DESC`;
       let an = this.syncSql.mysql(this.sett,q).data.rows;
       return an;
     }
