@@ -38,7 +38,7 @@ module.exports.dbworker = class dbworker {
       return an; 
     }
     getres(){
-      let q = `SELECT vote.id,users.name,pku.pku,films.film,films.type,
+      let q = `SELECT vote.id,users.name,pku.pku,films.film,films.type,vote.time,
       vote.janr+vote.dram+vote.actu+vote.orig+vote.soder+vote.hyd+vote.tex+vote.vira AS result
       FROM vote,films,users,pku
       WHERE 
