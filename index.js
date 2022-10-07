@@ -289,7 +289,17 @@ app.get('/rep',(req,res)=>{
  }
  res.send(voted)
 })
-
+app.get('/voted',(req,res)=>{
+  let users = dbworker.getres()
+  users.forEach(e =>{
+    e.type = getfilm(e.type)
+  })
+  res.render('voted',{
+    title: 'История голосов',
+    content:users,
+    auth: auth      
+  });
+})
 app.get('/resul',(req,res)=>{
   let users = dbworker.getallusers()
   users.forEach(e =>{

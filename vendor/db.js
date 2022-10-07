@@ -17,6 +17,18 @@ module.exports.dbworker = class dbworker {
       }
     }
 
+    getres(){
+      let q = `SELECT vote.id,users.name,pku.pku,films.film,films.type,
+      vote.janr+vote.dram+vote.actu+vote.orig+vote.soder+vote.hyd+vote.tex+vote.vira AS result
+      FROM vote,films,users,pku
+      WHERE 
+      vote.nameid = users.id AND
+      vote.filmid = films.id AND
+      films.pku_id = pku.id
+      ORDER BY films.type,result DESC`;
+      let an = this.syncSql.mysql(this.sett,q).data.rows;
+      return an;
+    }
     getallusers(){
       let q = `SELECT * FROM users;`;
       let an = this.syncSql.mysql(this.sett,q).data.rows;
