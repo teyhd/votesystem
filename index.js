@@ -293,8 +293,6 @@ app.get('/alli',(req,res)=>{
   let users = dbworker.getallitogs()
   users.forEach(e =>{
     e.type = getfilm(e.type)
-    let datecreate = new Date(e.time*1000);
-    e.time= `${curdate(datecreate.getDate())}.${curdate(datecreate.getMonth()+1)} ${curdate(datecreate.getHours())}:${curdate(datecreate.getMinutes())}:${curdate(datecreate.getSeconds())}`;
   })
   res.render('allitg',{
     title: 'Места',
@@ -306,6 +304,8 @@ app.get('/voted',(req,res)=>{
   let users = dbworker.getres()
   users.forEach(e =>{
     e.type = getfilm(e.type)
+    let datecreate = new Date(e.time*1000);
+    e.time= `${curdate(datecreate.getDate())}.${curdate(datecreate.getMonth()+1)} ${curdate(datecreate.getHours())}:${curdate(datecreate.getMinutes())}:${curdate(datecreate.getSeconds())}`;
   })
   res.render('voted',{
     title: 'История голосов',
