@@ -85,7 +85,7 @@ module.exports.dbworker = class dbworker {
       WHERE vote.filmid = film.id
       AND TYPE = ${type}
       GROUP BY film
-      ORDER BY itog DESC`
+      ORDER BY itogs DESC`
       return this.syncSql.mysql(this.sett,q).data.rows;
     }
     getuservoice(type,userid){
