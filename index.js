@@ -29,6 +29,14 @@ helpers: {
   OK: function(){
     i_count = 1
   },
+  SH_L:function (opts){
+    if (i_count<11) {
+      i_count++
+      return "Short List"
+    } else{
+      return ''
+    }
+  },
   I_C: function (opts){
     let anso = ''
     for (let i = 0; i < i_count; i++) {
@@ -476,7 +484,8 @@ function getfilm(num) {
     'Научно-популярный фильм',
     'Анимационный фильм',
     'Социальный/рекламный ролик',
-    'Музыкальный видеоклип'
+    'Музыкальный видеоклип',
+    'Игровой короткометражный фильм - Short list',
   ]
   ans[55] = "Администратор"
   return ans[num]
