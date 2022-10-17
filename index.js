@@ -242,7 +242,9 @@ app.get('/pers',(req,res)=>{
       results.forEach(element =>{
        element.id = ++id
        element.itog = element.janr+element.dram+element.actu+element.orig+element.soder+element.hyd+element.tex+element.vira
-      // console.log(element.itog)
+       // element.itogs = Math.round(element.itogs)
+        element.itogs = element.itogs.toFixed(2)
+       // console.log(element.itog)
      })
        res.render('itog',{
          title: 'Результаты',
@@ -283,6 +285,7 @@ app.get('/rep',(req,res)=>{
     el.role = getfilm(el.role)
     let datecreate = new Date(el.lastseen*1000);
     el.lastseen= `${curdate(datecreate.getDate())}.${curdate(datecreate.getMonth()+1)} ${curdate(datecreate.getHours())}:${curdate(datecreate.getMinutes())}:${curdate(datecreate.getSeconds())}`;
+  
   })
  } catch (error) {
   console.dir(error)
