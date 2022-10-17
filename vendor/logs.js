@@ -34,7 +34,7 @@ function log (par) {
     console.log(texta);
     return texta
   }
-
+/*
  let file = fs.readFileSync(path.join(__dirname, 'user.txt'),{encoding: 'utf-8', flag:'r'})
 let names = file.split("\n")
 names.forEach(e=>{
@@ -46,7 +46,7 @@ names.forEach(e=>{
 
  console.log(`${ans}${f[0]}`) 
  // console.log(`${ucFirst(f[1])} ${ucFirst(f[0].slice(0, 1))}`)
-})
+})*/
  
 function ucFirst(str) {
   if (!str) return str;
