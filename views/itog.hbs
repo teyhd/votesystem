@@ -27,11 +27,28 @@ VI кинофестиваль любительских короткометра�
                 {{#OK}}{{/OK}}
                 <tbody>
                     {{#each content}}
+                    {{#if_eq this.itogs -5}}
+                     <tr>
+                    <td>{{this.id}}</td>
+                    <td>{{this.pku}}</td>
+                    <td>{{this.film}}</td>
+                    <td>-</td>
+                    {{#if_j this.type 0}}<td>-</td>{{/if_j}}
+                    {{#if_j this.type 1 2}} <td>-</td>{{/if_j}}
+                    {{#if_j this.type 1 2}}<td>-</td>{{/if_j}}
+                    {{#if_j this.type 1 2}}<td>-</td>{{/if_j}}
+                    {{#if_j this.type 0 3 4 5}}<td>-</td>{{/if_j}}
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    {{#if_more this.type 1}}<td>-</td>{{/if_more}}
+                    {{#if_j this.type 0}}<td>-</td>{{/if_j}}
+                    </tr>                      
+                    {{else}}
                     <tr>
                     <td>{{this.id}}</td>
                     <td>{{this.pku}}</td>
                     <td>{{this.film}}</td>
-
                     <td>{{this.janr}}</td>
                     {{#if_j this.type 0}}<td>{{this.dram}}</td>{{/if_j}}
                     {{#if_j this.type 1 2}} <td>{{this.actu}}</td>{{/if_j}}
@@ -43,7 +60,9 @@ VI кинофестиваль любительских короткометра�
                     <td>{{this.itogs}}</td>
                     {{#if_more this.type 1}}<td>{{#I_C}}{{/I_C}}</td>{{/if_more}}
                     {{#if_j this.type 0}}<td>{{#SH_L}}{{/SH_L}}</td>{{/if_j}}
-                    </tr>    
+                    </tr>                       
+                    {{/if_eq}}
+ 
                     {{/each}}
                 </tbody>
         </table>
