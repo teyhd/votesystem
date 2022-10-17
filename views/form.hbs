@@ -20,7 +20,7 @@
                     <input hidden value="5" class="slider-max">
                     <br> <br> 
                 </div>
-                {{#if_j film.0.type 0}}
+                {{#if_j film.0.type 0 6}}
                 <div class="col s12"> 
                     <h5 class="center">Драматургия</h5>
                     <p class="center">(тема, идея, сюжет, композиция героя, характеры)</p>
@@ -61,7 +61,7 @@
                     <br> <br> 
                 </div>
                 {{/if_j}}
-                {{#if_j film.0.type 0 3 4 5}}
+                {{#if_j film.0.type 0 3 4 5 6}}
                 <div class="col s12"> 
                     <h5 class="center">Художественные достоинства</h5>
                     <p class="center ">(режиссерские решения, выдержанность стиля, цельность и законченность композиции, работа актеров, использование реквизита)</p>
@@ -79,7 +79,7 @@
                     <input class="slider-update-inp" type="text" value="0" hidden name="tex">       
                     <div class="slider-update" name="tex"></div>
                     {{#if_j film.0.type 3 4 5}}<input hidden value="5" class="slider-max">{{/if_j}}
-                    {{#if_j film.0.type 0 1 2}}<input hidden value="10" class="slider-max">{{/if_j}}
+                    {{#if_j film.0.type 0 1 2 6}}<input hidden value="10" class="slider-max">{{/if_j}}
                     
                     <br> <br> 
                 </div>

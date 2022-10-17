@@ -35,16 +35,20 @@ function log (par) {
     return texta
   }
 
-/* let file = fs.readFileSync(path.join(__dirname, 'user.txt'),{encoding: 'utf-8', flag:'r'})
+ let file = fs.readFileSync(path.join(__dirname, 'user.txt'),{encoding: 'utf-8', flag:'r'})
 let names = file.split("\n")
 names.forEach(e=>{
   e = e.toLowerCase()
   let f = e.split(".")
-  let ans = `${f[0]}`
-  ans = ans.replace(/\s{1,}/gm,'.');
+   let ans = `${f[1]}`
+ ans = ans.replace(/\s{1,}/gm,'.');
   ans = ans.replace(/^[ \s]+|[ \s]+$/gm,'');
-  ans = ans.split(".")
-  console.log(`${ans[1]}.${ans[0]}`)
- // console.log(`${f[1]} ${f[1].slice(0, 1)}.${f[2].slice(0, 1)}`)
+
+ console.log(`${ans}${f[0]}`) 
+ // console.log(`${ucFirst(f[1])} ${ucFirst(f[0].slice(0, 1))}`)
 })
- */
+ 
+function ucFirst(str) {
+  if (!str) return str;
+  return str[0].toUpperCase() + str.slice(1);
+}

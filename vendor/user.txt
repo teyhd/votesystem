@@ -1,14 +1,15 @@
-Aleksei A.G
-Ilona I.A
-Iuliia I.A
-Nodari N.T
-Vadim V.V
-Maksim M.Iu
-Irina I.V
-Artem A.N
-Anastasiia A.R
-Ilia I.B
-Elena E.A
-Svetlana S.E
-Arina A.A
-Inessa I.Iu
+aleksei.g
+ilona.b
+iuliia.v
+nodari.d
+vadim.k
+maksim.k
+irina.l
+artem.m
+anastasiia.m
+ilia.s
+elena.s
+svetlana.f
+arina.s
+inessa.iu
+nodari.d
