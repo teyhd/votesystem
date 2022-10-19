@@ -22,12 +22,14 @@ const TEMPFOLDER = path.join(appDir,'public/news/temp');
 var PORT = process.env.PORT || 505; 
 const app = express();
 var i_count = 1
+var i_counts = 0
 const hbs = exphbs.create({
 defaultLayout: 'main',
 extname: 'hbs',
 helpers: {
   OK: function(){
     i_count = 1
+    i_counts = 0
   },
   SH_L:function (opts){
     if (i_count<11) {
@@ -36,6 +38,25 @@ helpers: {
     } else{
       return ''
     }
+  },
+  I_CS: function (opts){
+    let anso = ''
+    for (let i = 0; i < i_counts; i++) {
+      anso = anso + "I"
+    }
+    if (i_counts==0){
+      i_counts++
+      return 'Гран-При'
+    } else{
+      if (i_counts<4) {
+        i_counts++
+        return anso + " место"
+      } else{
+        return ''
+      }
+    }
+    
+    
   },
   I_C: function (opts){
     let anso = ''
@@ -271,6 +292,45 @@ app.get('/pers',(req,res)=>{
  
 
  })
+ app.get('/itogs',(req,res)=>{
+  // console.dir(req.query)
+   logman.log(usrinfo.name,'смотрит итоговый протокол '+ getfilm(req.query.id));
+   //http://localhost/itog?id=1
+   //var user_info = dbworker.usrbyid(req.query.userid)
+   try {
+     var results = dbworker.gettyperes(req.query.id);
+     if (results==undefined) {
+       res.render('404',{
+         title: 'C таким ID нет',
+         auth: auth,
+       });
+       return 0;
+     } else {
+       let id = 0
+       results.forEach(element =>{
+        element.id = ++id
+        element.itog = element.janr+element.dram+element.actu+element.orig+element.soder+element.hyd+element.tex+element.vira
+        // element.itogs = Math.round(element.itogs)
+         element.itogs = element.itogs.toFixed(2)
+        // console.log(element.itog)
+      })
+        res.render('itog2',{
+          title: 'Результаты',
+          auth: auth,
+          content: results,
+          type:req.query.id,
+          nom: getfilm(req.query.id),
+        });
+       
+      }
+ 
+   } catch (error) {
+     
+   }
+ 
+  
+ 
+  })
 app.get('/test',(req,res)=>{
   let ans = []
  try {
